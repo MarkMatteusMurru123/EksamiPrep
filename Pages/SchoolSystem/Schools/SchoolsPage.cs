@@ -38,11 +38,11 @@ namespace Pages.SchoolSystem.Schools
             return SchoolViewFactory.Create(obj);
         }
 
-        public string GetStudentName(string schoolId)
+        public string GetStudentName(string studentId)
         {
             foreach (var m in Students)
             {
-                if (m.SchoolId == schoolId)
+                if (m.Id == studentId)
                     return m.Name;
             }
 

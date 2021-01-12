@@ -53,13 +53,13 @@
 <h3>Kooli õpilased</h3>
                 <table class="table">
                     <tr>
-                        <th>@(GetMember.DisplayName<StudentView>(x => x.SchoolId))</th>
+                        <th>@(GetMember.DisplayName<StudentView>(x => x.Name))</th>
                     </tr>
 
                     @foreach (var item in Model.Students)
                     {
     <tr>
-        <td> @Html.Raw(Model.GetStudentName(item.SchoolId))
+        <td> @Html.Raw(Model.GetStudentName(item.Id))
     </tr>}
 
                 </table>}

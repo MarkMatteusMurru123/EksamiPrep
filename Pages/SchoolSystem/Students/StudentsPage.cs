@@ -25,11 +25,11 @@ namespace Pages.SchoolSystem.Students
 
             schools = schoolsRepository;
         }
-        public string GetSchoolName(string studentId)
+        public string GetSchoolName(string schoolId)
         {
             foreach (var m in Schools)
             {
-                if (m.Value == studentId)
+                if (m.Value == schoolId)
                     return m.Text;
             }
 
