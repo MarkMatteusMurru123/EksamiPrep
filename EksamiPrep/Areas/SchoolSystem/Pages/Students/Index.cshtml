@@ -1,0 +1,49 @@
+﻿@page
+@using System.Security.Cryptography.X509Certificates
+@using Pages.Extensions
+@model WebApp.Areas.SchoolSystem.Pages.Students.IndexModel
+
+@{ Layout = "_Index";
+                var page = Model.PageUrl; }
+
+@section Create {
+    @Html.HypertextLinkFor(string.Empty, new Link(Constants.createNewLinkTitle, $"{page}/Create"))
+}
+
+<body>
+    <table class="table">
+        <thead>
+            @Html.TableHeaderFor(new Link(Html.DisplayNameFor(m => m.Item.Name), Model.GetSortString(m => m.Name, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.SchoolId), Model.GetSortString(m => m.SchoolId, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.Age), Model.GetSortString(m => m.Age, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.Email), Model.GetSortString(m => m.Email, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.FavouriteSubject), Model.GetSortString(m => m.FavouriteSubject, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.EnrollmentDate), Model.GetSortString(m => m.EnrollmentDate, page))
+
+
+                     )
+            
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+<tr>
+    @Html.TableRowFor(
+             page,
+             item.Id,
+             Model.FixedFilter,
+             Model.FixedValue,
+        Html.DisplayFor(modelItem => item.Name),
+        Html.Raw(Model.GetSchoolName(item.SchoolId)),
+        Html.DisplayFor(modelItem => item.Age),
+        Html.DisplayFor(modelItem => item.Email),
+            Html.DisplayFor(modelItem => item.FavouriteSubject),
+        Html.DisplayFor(modelItem => item.EnrollmentDate)
+
+
+             )
+</tr>}
+        </tbody>
+    </table>
+</body>

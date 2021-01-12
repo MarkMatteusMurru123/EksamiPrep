@@ -1,8 +1,16 @@
+using Domain.SchoolSystem.Schools;
+using Domain.SchoolSystem.Students;
+using Infra;
+using Infra.SchoolSystem.Schools;
+using Infra.SchoolSystem.Students;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApp.Data;
 
 namespace WebApp
 {
@@ -18,6 +26,17 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ProjectDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages();
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<ISchoolsRepository, SchoolsRepository>();
             services.AddRazorPages();
         }
 

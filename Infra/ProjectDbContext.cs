@@ -1,5 +1,5 @@
-﻿using Data.Schools;
-using Data.Students;
+﻿using Data.SchoolSystem.Schools;
+using Data.SchoolSystem.Students;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra

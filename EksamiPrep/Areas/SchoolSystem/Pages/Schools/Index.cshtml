@@ -1,0 +1,66 @@
+﻿@page
+@using Aids
+@using Facade.SchoolSystem.Students
+@using Pages.Extensions
+@model WebApp.Areas.SchoolSystem.Pages.Schools.IndexModel
+
+@{ Layout = "_Index";
+                var page = Model.PageUrl; }
+
+@section Create {
+    @Html.HypertextLinkFor(string.Empty, new Link(Constants.createNewLinkTitle, $"{page}/Create"))
+}
+
+<body>
+    <table class="table">
+        <thead>
+            @Html.TableHeaderFor(
+                     new Link(Html.DisplayNameFor(m => m.Item.Name), Model.GetSortString(m => m.Name, page)),
+                     new Link(Html.DisplayNameFor(m => m.Item.Email), Model.GetSortString(m => m.Email, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.Address), Model.GetSortString(m => m.Address, page)),
+                new Link(Html.DisplayNameFor(m => m.Item.Type), Model.GetSortString(m => m.Type, page))
+                     )
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var selectedRow = "";
+                if (item.Id == Model.SelectedId)
+                {
+                    selectedRow = "alert-success";
+                    Model.LoadDetails(item);
+                }
+<tr class=@selectedRow>
+    @Html.TableRowWithSelectFor(
+             page,
+             item.Id,
+             Model.SortOrder,
+             Model.SearchString,
+             Model.PageIndex,
+             Model.FixedFilter,
+             Model.FixedValue,
+             Html.DisplayFor(modelItem => item.Name),
+             Html.DisplayFor(modelItem => item.Email),
+        Html.DisplayFor(modelItem => item.Address),
+        Html.DisplayFor(modelItem => item.Type)
+             )
+</tr>            }
+        </tbody>
+    </table>
+
+    @if (Model.Students.Count != 0)
+    {
+<h3>Kooli õpilased</h3>
+                <table class="table">
+                    <tr>
+                        <th>@(GetMember.DisplayName<StudentView>(x => x.SchoolId))</th>
+                    </tr>
+
+                    @foreach (var item in Model.Students)
+                    {
+    <tr>
+        <td> @Html.Raw(Model.GetStudentName(item.SchoolId))
+    </tr>}
+
+                </table>}
+</body>

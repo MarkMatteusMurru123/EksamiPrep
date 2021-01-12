@@ -1,0 +1,16 @@
+﻿@page
+@using Pages.Extensions
+@model WebApp.Areas.SchoolSystem.Pages.Schools.DeleteModel
+
+@{ Layout = "_Delete"; }
+
+<body>
+    <dl class="row">
+        @Html.DisplayControlsFor(model => model.Item.Id)
+        @Html.DisplayControlsFor(model => model.Item.Name)
+        @Html.DisplayControlsFor(model => model.Item.Email)
+        @Html.DisplayControlsFor(model => model.Item.Address)
+        @Html.DisplayControlsFor(model => model.Item.Type)
+
+    </dl>
+</body>
