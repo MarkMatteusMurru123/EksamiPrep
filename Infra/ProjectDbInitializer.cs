@@ -37,7 +37,8 @@ namespace Infra
         {
             Id = "tiinasirkel",
             Name = "Tiina Sirkel",
-            Age = 25,
+            SchoolId = "49406160242",
+            Age = 15,
             Email = "t.sirkel@gmail.com",
             FavouriteSubject = "Bioloogia",
             EnrollmentDate = Convert.ToDateTime("02/09/2018"),
@@ -48,7 +49,8 @@ namespace Infra
         {
             Id = "martinleib",
             Name = "Martin Leib",
-            Age = 35,
+            SchoolId = "37201143255",
+            Age = 16,
             Email = "m.leib@gmail.com",
             FavouriteSubject = "Math",
             EnrollmentDate = Convert.ToDateTime("02/09/2018"),
@@ -59,7 +61,8 @@ namespace Infra
         {
             Id = "marianneots",
             Name = "Marianne Ots",
-            Age = 33,
+            SchoolId = "49003310713",
+            Age = 12,
             Email = "m.ots@gmail.com",
             FavouriteSubject = "Kirjandus",
             EnrollmentDate = Convert.ToDateTime("22/05/2015"),
